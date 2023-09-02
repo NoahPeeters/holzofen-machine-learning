@@ -8,11 +8,16 @@ Es gibt folgende Ordner und Dateien
 
 ### data Ordner
 
-Der data Ordner enthält alle notwendigen Daten.
+Der data Ordner enthält alle notwendigen Daten. \
+Im pictures Ordner sind alle in den Notebooks verwendete Bilder abgelegt.
 
 ### Jupiter Notebooks
 
 Die Notebooks liegen alle im Hauptverzeichnis. Die Notebooks sind in der Reihenfolge auszuführen, wie sie nummeriert sind.
+
+#### 00_domain_kowledge.ipynb
+
+Dieses Notebook enthält eine Einleitung der Arbeit und die zum Verständnis notwendigen Informationen zum Domänenwissen. Hier sind auch Bilder und erklärende Grafiken zum Ofen zu finden.
 
 #### 01_data_preparation.ipynb
 
