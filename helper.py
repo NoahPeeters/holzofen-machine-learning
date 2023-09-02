@@ -2,13 +2,14 @@ import os.path
 import pandas as pd
 
 
-def load_merged_data(only_turned_off=False, drop_na=True):
+def load_merged_data(only_turned_off=False, only_standard_refuelling=True, drop_na=True):
     base_path = os.path.abspath("")
     data_directory = os.path.join(base_path, "data")
-    df = pd.read_csv(os.path.join(data_directory, 'merged.csv'), sep=',', parse_dates=['date', 'refuellingDateActual'])
-    df = df[df['refuellingChargingDegreeActual'] >= 14.5]
+    # read as pickle
+    df = pd.read_pickle(os.path.join(data_directory, 'merged.pkl'))
 
-    df['day'] = df['date'].dt.day
+    if only_standard_refuelling:
+        df = df[df['refuellingChargingDegreeActual'] >= 14.5]
 
     if only_turned_off:
         df = df[df['Ausgeschaltet'] == 1]
@@ -20,27 +21,26 @@ def load_merged_data(only_turned_off=False, drop_na=True):
 
 
 def split_train_val_test(df, train, val):
-    df = df.drop(columns=['date', 'operationPhase', 'operationPhaseNumeric', 'refuellingDateActual', 'refuellingChargingDegreeActual'])
-    df = df.sample(frac=1).reset_index(drop=True)
-    train_val_critical_day = int(30 * train)
-    val_test_critical_day = int(30 * (train + val))
 
-    train_df = df[df['day'] <= train_val_critical_day]
-    val_df = df[(df['day'] > train_val_critical_day) & (df['day'] <= val_test_critical_day)]
-    test_df = df[df['day'] > val_test_critical_day]
+    df['day'] = df['date'].dt.day
 
-    train_df = train_df.drop(columns=['day'])
-    val_df = val_df.drop(columns=['day'])
-    test_df = test_df.drop(columns=['day'])
+    # split by day
+
+    df = df.sort_values(by=['day'])
+    df = df.drop(columns=['day'])
+
+    n = len(df)
+    train_df = df.iloc[:int(n * train)]
+    val_df = df.iloc[int(n * train):int(n * (train + val))]
+    test_df = df.iloc[int(n * (train + val)):]
+
     return train_df, val_df, test_df
 
 
-def split_xy(df, sample_size=None):
-    df = df.dropna()
-
+def split_xy(df, input_columns, sample_size=None):
     if sample_size is not None:
         df = df.sample(sample_size)
 
-    x = df.drop(columns=['refuellingTimePointActual'])
+    x = df[input_columns]
     y = df['refuellingTimePointActual']
     return x, y
