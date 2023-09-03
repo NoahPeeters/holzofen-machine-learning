@@ -2,7 +2,7 @@ import os.path
 import pandas as pd
 
 
-def load_merged_data(only_turned_off=False, only_standard_refuelling=True, drop_na=True):
+def load_merged_data(only_standard_refuelling=True, drop_na=True):
     base_path = os.path.abspath("")
     data_directory = os.path.join(base_path, "data")
     # read as pickle
@@ -10,9 +10,6 @@ def load_merged_data(only_turned_off=False, only_standard_refuelling=True, drop_
 
     if only_standard_refuelling:
         df = df[df['refuellingChargingDegreeActual'] >= 14.5]
-
-    if only_turned_off:
-        df = df[df['Ausgeschaltet'] == 1]
 
     if drop_na:
         df = df.dropna()
