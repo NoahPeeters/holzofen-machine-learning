@@ -2,48 +2,80 @@
 
 In dieser Arbeit wird ein Machine Learning Modell entwickelt, welches den Nachfüllzeitpunkt eines Holzofens vorhersagt. Dazu werden die Daten eines Holzofens mit Wetterdaten kombiniert und in einem Machine Learning Modell verarbeitet.
 
-## Ordnerstruktur
+## Aufbau
 
-Es gibt folgende Ordner und Dateien
+Um die Arbeit nachvollziehbar und verständlich aufzubauen, wurde die Arbeit in mehrere Schritte unterteilt. Für jeden Schritt gibt es ein eigenes Jupyter Notebook.
+Die Jupiter Notebooks bauen inhaltlich aufeinander aus:
 
-### data Ordner
-
-Der data Ordner enthält alle notwendigen Daten. \
-Im pictures Ordner sind alle in den Notebooks verwendete Bilder abgelegt.
-
-### Jupiter Notebooks
-
-Die Notebooks liegen alle im Hauptverzeichnis. Die Notebooks sind in der Reihenfolge auszuführen, wie sie nummeriert sind.
-
-#### 00_domain_kowledge.ipynb
+### 00_domain_kowledge.ipynb
 
 Dieses Notebook enthält eine Einleitung der Arbeit und die zum Verständnis notwendigen Informationen zum Domänenwissen. Hier sind auch Bilder und erklärende Grafiken zum Ofen zu finden.
 
-#### 01_data_preparation.ipynb
+### 01_data_preparation.ipynb
 
-Dieses Notebook bereitet die Daten für das Machine Learning Modell vor. Dazu werden die Daten aus dem data Ordner geladen und mit Wetterdaten kombiniert. Das Ergebnis wird in der Datei `data/merged.csv` gespeichert. Ist die Datei bereits vorhanden, ist das Ausführen dieses Notebooks nicht notwendig.
+Dieses Notebook bereitet die Daten für alle weiteren Schritte vor. Dazu werden die Daten aus dem data Ordner geladen und mit Wetterdaten kombiniert. Das Ergebnis wird in der Datei `data/merged.pkl` gespeichert. Daher ist es notwendig, dieses Notebook auszuführen, bevor die weiteren Notebooks ausgeführt werden können.
 
-# Installation
+### 02_exploratory_data_analysis.ipynb
 
-Es gibt zwei Möglichkeiten, wie dieses Projekte installiert werden kann.
+Dieses Notebook enthält die explorative Datenanalyse. Hier werden die Daten untersucht und erste Erkenntnisse gewonnen.
 
-## Git
+### 03_training_preparation.ipynb
 
-Wenn das Projekt über Git installiert wird, müssen zunächst alle Daten geladen werden.
-Die Daten werden über git lfs verwaltet. Dazu muss zunächst git lfs installiert werden.
+Dieses Notebook betrachtet die beiden Konzepte Cross Validation und Modell Evaluation.
+Es wird untersucht, welche Verfahren für diese beiden Konzepte für diese Arbeit geeignet sind.
+
+### 04_classic.ipynb
+
+Dieses Notebook enthält die klassischen Machine Learning Modelle. Es werden verschiedene Modelle trainiert und evaluiert.
+
+### 05_xgboost_hyperparameter_tuning.ipynb
+
+Dieses Notebook enthält das Hyperparameter Tuning für das XGBoost Modell. Es werden verschiedene Hyperparameter Kombinationen getestet und evaluiert.
+**Dieses Notebook ist noch nicht fertig.**
+
+### 06_final.ipynb
+
+Dieses Notebook enthält das finale Modell sowie eine abschließende Evaluation.
+**Dieses Notebook ist noch nicht fertig.**
+
+### Weitere Daten
+
+Neben den Jupyter Notebooks gibt es noch weitere Dateien, die für die Arbeit notwendig sind.
+
+Im `data` Ordner befinden sich die Rohdaten sowie die aufbereiteten Daten (sofern `01_data_preparation.ipynb` ausgeführt wurde).
+
+Im `pictures` Ordner befinden sich alle in den Notebooks verwendeten Bilder.
+
+Die Datei `helper.py` enthält Funktionen, die in den Notebooks verwendet werden.
+
+Die Datei `requirements.txt` enthält alle notwendigen Python Pakete, die für die Ausführung der Notebooks notwendig sind.
+
+## Einrichtung 
+
+Bei der Einrichtung müssen folgende Schritte durchgeführt werden:
+
+### Python Umgebung
+
+Für die Ausführung der Notebooks wird eine Python Umgebung benötigt. Alle benötigten Pakete sind in der Datei `requirements.txt` aufgelistet. Die Python Umgebung kann mit folgendem Befehl eingerichtet werden:
 
 ```bash
-git lfs install
-git lfs pull
+pip install -r requirements.txt
 ```
 
-Nun müssen die Daten entpackt werden.
+### Daten
+
+Je nachdem, wie das Projekt bezogen wurde, müssen die Daten noch vorbereitet werden.
+
+1. Wenn der Ordner `data/raw` existiert, sind alle Daten bereits vorbereitet und es ist nichts weiter zu tun.
+2. Wenn die Daten `data/rawzip` existieren, müssen diese noch entpackt werden. Dazu kann folgender Befehl verwendet werden:
 
 ```bash
 unzip data/raw_data.zip -d data/
 ```
 
-## Zip Datei
+3. Wenn die Daten noch nicht vorhanden sind, müssen diese zunächst bezogen werden. Wurde das Projekt über Git geladen, werden die Daten über `git lfs` verwaltet. Dazu muss zunächst `git lfs` installiert und die Daten bezogen werden.
 
-Alternativ kann das Projekt auch als Zip Datei heruntergeladen werden. In diesem Fall enthält das Projekt bereits die Daten und muss nicht entpackt werden.
-
+```bash
+git lfs install
+git lfs pull
+```
