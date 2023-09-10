@@ -12,3 +12,4 @@ xgboost~=1.7.6
 schemdraw~=0.17
 plotly~=5.16.1
 statsmodels~=0.14.0
+scipy~=1.11.2

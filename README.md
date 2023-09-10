@@ -31,16 +31,27 @@ Dieses Notebook enthält die klassischen Machine Learning Modelle. Es werden ver
 ### 05_xgboost_hyperparameter_tuning.ipynb
 
 Dieses Notebook enthält das Hyperparameter Tuning für das XGBoost Modell. Es werden verschiedene Hyperparameter Kombinationen getestet und evaluiert.
-**Dieses Notebook ist noch nicht fertig.**
 
-### 06_final.ipynb
+### 06_random_forest_hyperparameter_tuning.ipynb
 
-Dieses Notebook enthält das finale Modell sowie eine abschließende Evaluation.
-**Dieses Notebook ist noch nicht fertig.**
+Dieses Notebook enthält das Hyperparameter Tuning für das Random Forest Modell. Es werden verschiedene Hyperparameter Kombinationen getestet und evaluiert.
+
+### 07_final.ipynb
+
+Dieses Notebook enthält eine finale Betrachtung der Arbeit und einen Ausblick auf mögliche weitere Schritte.
+
+
+### Abgaberelevante Dateien
+
+Neben den Jupyter Notebooks gibt es noch weitere Dateien, die für die Abgabe relevant sind.
+
+Die Datei *Zwischenbericht.pdf* enthält den Zwischenbericht der Arbeit, der am 03.08.2023 abgegeben wurde.
+
+Die Datei *Erklärung Eigenleistung.pdf* enthält die Erklärung der Eigenleistung sowie die Auflistung der Hauptverantwortlichen für die einzelnen Teile der Arbeit.
+
+Die Datei *export.pdf* enthält die exportierte Version der Jupyter Notebooks. Diese Datei kann mit einem PDF Reader geöffnet werden und enthält alle Inhalte der Jupyter Notebooks.
 
 ### Weitere Daten
-
-Neben den Jupyter Notebooks gibt es noch weitere Dateien, die für die Arbeit notwendig sind.
 
 Im `data` Ordner befinden sich die Rohdaten sowie die aufbereiteten Daten (sofern `01_data_preparation.ipynb` ausgeführt wurde).
 
@@ -67,7 +78,7 @@ pip install -r requirements.txt
 Je nachdem, wie das Projekt bezogen wurde, müssen die Daten noch vorbereitet werden.
 
 1. Wenn der Ordner `data/raw` existiert, sind alle Daten bereits vorbereitet und es ist nichts weiter zu tun.
-2. Wenn die Daten `data/rawzip` existieren, müssen diese noch entpackt werden. Dazu kann folgender Befehl verwendet werden:
+2. Wenn die Daten `data/raw.zip` existieren, müssen diese noch entpackt werden. Dazu kann folgender Befehl verwendet werden:
 
 ```bash
 unzip data/raw_data.zip -d data/

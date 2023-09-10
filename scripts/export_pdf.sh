@@ -1,5 +1,5 @@
 
-excluded_files=( "05_xgboost_hyperparameter_tuning.ipynb" "06_final.ipynb")
+excluded_files=( )
 
 # Get list of all notebooks in the same directory as this script
 # and convert them to PDF
@@ -15,7 +15,7 @@ for f in ../*.ipynb; do
 done
 
 # merge all PDFs into one
-pdfunite export/*.pdf ../export.pdf
+pdfunite export/*.pdf Erklärung\ Eigenleistung.pdf ../export.pdf
 
 # remove the temporary directory
 rm -rf export
