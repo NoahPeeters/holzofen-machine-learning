@@ -15,7 +15,7 @@ for f in ../*.ipynb; do
 done
 
 # merge all PDFs into one
-pdfunite export/*.pdf Erklärung\ Eigenleistung.pdf ../export.pdf
+pdfunite export/*.pdf ../Eigenleistung.pdf ../export.pdf
 
 # remove the temporary directory
 rm -rf export

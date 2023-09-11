@@ -47,7 +47,7 @@ Neben den Jupyter Notebooks gibt es noch weitere Dateien, die für die Abgabe re
 
 Die Datei *Zwischenbericht.pdf* enthält den Zwischenbericht der Arbeit, der am 03.08.2023 abgegeben wurde.
 
-Die Datei *Erklärung Eigenleistung.pdf* enthält die Erklärung der Eigenleistung sowie die Auflistung der Hauptverantwortlichen für die einzelnen Teile der Arbeit.
+Die Datei *Eigenleistung.pdf* enthält die Erklärung der Eigenleistung sowie die Auflistung der Hauptverantwortlichen für die einzelnen Teile der Arbeit.
 
 Die Datei *export.pdf* enthält die exportierte Version der Jupyter Notebooks. Diese Datei kann mit einem PDF Reader geöffnet werden und enthält alle Inhalte der Jupyter Notebooks.
 
